@@ -52,9 +52,9 @@ RSpec.describe PinsController do
   describe 'SHOW /pins/:id.json' do
     context 'valid pin id' do
       it 'returns pin with corresponding id' do
-        expect {
-          post :create, pin: valid_pin_data
-        }.to change { Pin.count }.by(1)
+        create(:pin, id: 3)
+        response = get :show, format: :json, id: 3
+        expect(JSON.parse(response.body)['id']).to eq(3)
       end
     end
   end
