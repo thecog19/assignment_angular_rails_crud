@@ -62,6 +62,17 @@ Board.config(
       }
 
     })
+
+    .state('pins.show',{
+      url: '/pins/:id',
+      views: {
+        '@': {
+          controller: 'pinShowCtrl',
+          templateUrl: 'templates/pins/show.html'
+        }
+      }
+
+    })
   }
 
 ])
