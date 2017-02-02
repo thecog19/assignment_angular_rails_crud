@@ -31,6 +31,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails'
   gem 'guard-rspec'
+  gem 'factory_girl_rails', '~> 4.0'
 end
 
 group :development do
