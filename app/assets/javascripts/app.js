@@ -1,7 +1,8 @@
-var Board = angular.module("Board", ["ui.router", "restangular"])
-.constant("_", window._);
 
-//xcsrf config
+var Board = angular.module("Board", ["ui.router", "restangular", "Devise"])
+                   .constant("_", window._);
+
+// CSRF config
 Board.config(
   [ "$httpProvider",
   function($httpProvider){
@@ -13,19 +14,22 @@ Board.config(
       .common['X-CSRF-Token'] = token;
   }])
 
-//auth stuff
-Board.config([
-  'AuthProvider',
+// Devise config
+Board.config(
+  ['AuthProvider',
+
   function(AuthProvider) {
     AuthProvider.loginPath('/api/v1/user/sign_in.json');
     AuthProvider.loginMethod('POST');
     AuthProvider.resourceName('users');
   }
+
 ]);
 
-//restangular config
-Board.config([
-    'RestangularProvider',
+// Restangular config
+Board.config(
+  ['RestangularProvider',
+
     function(RestangularProvider){
       RestangularProvider.setBaseUrl('/api/v1');
       RestangularProvider.setRequestSuffix('.json');
@@ -33,16 +37,19 @@ Board.config([
           "content-type": "application/json"
       });
     }
+
 ]);
 
-//routes
-Board.config([
-  '$stateProvider', '$urlRouterProvider',
+// UI Router config
+Board.config(
+  ['$stateProvider', '$urlRouterProvider',
+
   function($stateProvider, $urlRouterProvider){
     $urlRouterProvider.otherwise('/');
 
     $stateProvider.state('index', {
-      
-    })
+
+    });
   }
+
 ])
