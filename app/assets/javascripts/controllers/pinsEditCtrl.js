@@ -4,19 +4,14 @@ Board.controller('pinsEditCtrl',
 
     function($scope, $stateParams, pinService) {
 
-      $scope.pinParams = {};
-
       pinService.find($stateParams.id)
       .then(function(pin) {
         $scope.pin = pin;
         $scope.pin.itemName = $scope.pin.item_name;
         $scope.pin.transactionType = $scope.pin.transaction_type;
-        angular.copy($scope.pin, $scope.pinParams);
       });
 
       $scope.transactionOptions = pinService.getTransactOpts();
-
-      $scope.pinParams = {};
 
       var _updatePin = function(pin) {
         angular.copy(pin, $scope.pin);
@@ -24,7 +19,7 @@ Board.controller('pinsEditCtrl',
 
       $scope.editPin = function(pinForm) {
         if (!pinForm.$valid) return;
-        $scope.pin.edit($scope.pinParams)
+        $scope.pin.edit($scope.pin)
         //.then(function(response) {
         //_updatePin(response)
         //$scope.pinParams = {};

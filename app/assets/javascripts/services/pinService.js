@@ -26,12 +26,11 @@ Board.factory('pinService',
         return collection;
       });
 
-      var edit = function(pin){
-        return pin.put()
-        //.then(function(response){
-          //console.log(response);
-        //});
-      };
+      Restangular.extendModel('pins', function(model){
+        model.del = function(){
+          model.delete()
+        }
+      })
 
       Restangular.extendModel('pins', function(model){
 
@@ -39,7 +38,7 @@ Board.factory('pinService',
           model.item_name = pinParams.itemName;
           model.transaction_type = pinParams.transactionType;
           model.description = pinParams.description;
-          edit(model);
+          return model.put();
         };
 
         return model;
