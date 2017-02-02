@@ -12,4 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap
+//= require angular
+//= require lodash
+//= angular-devise
+//= require restangular
+//= require ui-router
 //= require_tree .
