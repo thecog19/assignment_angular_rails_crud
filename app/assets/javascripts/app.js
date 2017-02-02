@@ -45,11 +45,24 @@ Board.config(
   ['$stateProvider', '$urlRouterProvider',
 
   function($stateProvider, $urlRouterProvider){
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/pins');
 
-    $stateProvider.state('index', {
+    $stateProvider.state('pins', {
+      url: "",
+      abstract: true
 
-    });
+    })
+
+    .state('pins.index',{
+      url: "/pins",
+      views: {
+        "@": {
+          controller: "pinsCtrl",
+          templateUrl: "templates/pins/index.html"
+        }
+      }
+
+    })
   }
 
 ])
