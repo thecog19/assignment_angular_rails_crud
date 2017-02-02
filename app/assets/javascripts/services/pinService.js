@@ -21,6 +21,18 @@ Board.factory('pinService',
         .then(all);
       };
 
+      var edit = function(params){
+        return Restangular.one("pins", id).post({
+          pin: {
+            item_name: params.itemName,
+            transaction_type: params.transactionType,
+            description: params.description
+          }
+        })
+        .then(one);
+          
+      }
+
       var find = function(id){
         return Restangular.one("pins", id).get();
       };
@@ -30,6 +42,11 @@ Board.factory('pinService',
         return collection;
       });
 
+      Restangular.extendModel('pins', function(model){
+        model.edit = edit;
+        return model;
+      })
+
       var getTransactOpts = function() {
         return transactionOptions;
       };
@@ -38,7 +55,8 @@ Board.factory('pinService',
         all:all,
         create: create,
         getTransactOpts: getTransactOpts,
-        find: find
+        find: find,
+        edit: edit
       };
 
     }

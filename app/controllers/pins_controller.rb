@@ -29,6 +29,11 @@ class PinsController < ApplicationController
   end
 
   def update
+    @pin = Pin.find(params[:id])
+    @pin.update_attributes(pin_params)
+    respond_to do |format|
+      format.json { render json: @pin }
+    end
   end
 
   private
