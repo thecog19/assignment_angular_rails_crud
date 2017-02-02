@@ -1,22 +1,21 @@
 <main class='container'>
-  <pin-header pin="pin"></pin-header>
+  <pin-header pin='pin'></pin-header>
 
   <hr>
 
   <h3>{{pin.item_name}}</h3>
 
-  <h5 class="buy">{{pin.transaction_type}}</h5>
+  <h5 class='buy'>{{pin.transaction_type}}</h5>
 
-  <ul class="nav nav-pills">
-    <li role="presentation"><a ui-sref="pins.show({ id: pin.id })">Show</a></li>
-    <li role="presentation"><a ui-sref="#">Delete</a></li>
+  <ul class='nav nav-pills'>
+    <li role='presentation'><a ui-sref='pins.show({ id: pin.id })'>Show</a></li>
+    <li role='presentation'><a ui-sref='#'>Delete</a></li>
   </ul>
 
   <pin-form
-     pin-params='pinParams'
+     pin-params='pin'
      transaction-options='transactionOptions'
-     process-form='createPin(pinForm)'>
-
+     process-form='editPin(pinForm)'>
   </pin-form>
 
 </main>

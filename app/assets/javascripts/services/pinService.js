@@ -21,31 +21,39 @@ Board.factory('pinService',
         .then(all);
       };
 
-      var edit = function(params){
-        return Restangular.one("pins", id).post({
-          pin: {
-            item_name: params.itemName,
-            transaction_type: params.transactionType,
-            description: params.description
-          }
-        })
-        .then(one);
-          
-      }
-
-      var find = function(id){
-        return Restangular.one("pins", id).get();
-      };
-
       Restangular.extendCollection('pins', function(collection) {
         collection.create = create;
         return collection;
       });
 
+      var edit = function(pin){
+        return pin.save({
+          pin: {
+            item_name: pin.itemName,
+            transaction_type: pin.transactionType,
+            description: pin.description
+          }
+        });
+        //.then(function(response){
+          //console.log(response);
+        //});
+      };
+
       Restangular.extendModel('pins', function(model){
-        model.edit = edit;
+
+        model.edit = function(pinParams) {
+          model.item_name = pinParams.itemName;
+          model.transaction_type = pinParams.transactionType;
+          model.description = pinParams.description;
+          edit(model);
+        };
+
         return model;
-      })
+      });
+
+      var find = function(id){
+        return Restangular.one('pins', id).get();
+      };
 
       var getTransactOpts = function() {
         return transactionOptions;
@@ -53,10 +61,8 @@ Board.factory('pinService',
 
       return {
         all:all,
-        create: create,
         getTransactOpts: getTransactOpts,
-        find: find,
-        edit: edit
+        find: find
       };
 
     }
