@@ -25,4 +25,8 @@ RSpec.describe PinsController do
     end
   end
 
+   describe 'create /pins.json' do
+
+   end
+
 end

@@ -9,7 +9,7 @@ class PinsController < ApplicationController
 
   def create
     @pin = Pin.new(pin_params)
-    @pin.save ? successful_create : failed_create
+    @pin.save 
   end
 
   def destroy
@@ -33,12 +33,7 @@ class PinsController < ApplicationController
 
   private
 
-    def successful_create
-    end
-
-    def failed_create
-    end
-
+  
     def pin_params
       params.require(:pin).permit(:item_name, :transaction_type, :description)
     end
