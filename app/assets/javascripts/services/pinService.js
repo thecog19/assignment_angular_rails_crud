@@ -27,13 +27,7 @@ Board.factory('pinService',
       });
 
       var edit = function(pin){
-        return pin.save({
-          pin: {
-            item_name: pin.itemName,
-            transaction_type: pin.transactionType,
-            description: pin.description
-          }
-        });
+        return pin.put()
         //.then(function(response){
           //console.log(response);
         //});

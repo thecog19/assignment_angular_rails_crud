@@ -4,11 +4,14 @@ Board.controller('pinsEditCtrl',
 
     function($scope, $stateParams, pinService) {
 
+      $scope.pinParams = {};
+
       pinService.find($stateParams.id)
       .then(function(pin) {
         $scope.pin = pin;
         $scope.pin.itemName = $scope.pin.item_name;
         $scope.pin.transactionType = $scope.pin.transaction_type;
+        angular.copy($scope.pin, $scope.pinParams);
       });
 
       $scope.transactionOptions = pinService.getTransactOpts();
