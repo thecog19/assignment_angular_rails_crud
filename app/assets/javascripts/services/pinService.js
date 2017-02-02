@@ -22,8 +22,8 @@ Board.factory('pinService',
       };
 
       var find = function(id){
-        return Restangular.one("pins", id).get()
-      }
+        return Restangular.one("pins", id).get();
+      };
 
       Restangular.extendCollection('pins', function(collection) {
         collection.create = create;

@@ -8,9 +8,15 @@
   <h5 class="buy">{{pin.transaction_type}}</h5>
 
   <ul class="nav nav-pills">
-    <li role="presentation"><a ui-sref="pins.edit({ id: pin.id })">Edit</a></li>
+    <li role="presentation"><a ui-sref="pins.show({ id: pin.id })">Show</a></li>
     <li role="presentation"><a ui-sref="#">Delete</a></li>
   </ul>
 
-  {{pin.description}}
+  <pin-form
+     pin-params='pinParams'
+     transaction-options='transactionOptions'
+     process-form='createPin(pinForm)'>
+
+  </pin-form>
+
 </main>

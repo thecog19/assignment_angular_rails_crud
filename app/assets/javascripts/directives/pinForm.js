@@ -1,14 +1,14 @@
 
-Board.directive('newPinForm', function() {
+Board.directive('pinForm', function() {
 
   return {
 
-    templateUrl: 'templates/pins/newPinForm.html',
+    templateUrl: 'templates/pins/pinForm.html',
     restrict: 'E',
     scope: {
       pinParams: '=',
       transactionOptions: '=',
-      createPin: '&'
+      processForm: '&'
     }
   };
 

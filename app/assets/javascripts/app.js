@@ -62,7 +62,15 @@ Board.config(
       }
 
     })
-
+    .state('pins.edit', {
+      url: '/pins/edit/:id',
+      views: {
+        '@': {
+          controller: 'pinsEditCtrl',
+          templateUrl: 'templates/pins/edit.html'
+        }
+      }
+    })
     .state('pins.show',{
       url: '/pins/:id',
       views: {
@@ -71,8 +79,7 @@ Board.config(
           templateUrl: 'templates/pins/show.html'
         }
       }
-
-    })
+    });
   }
 
-])
+]);
