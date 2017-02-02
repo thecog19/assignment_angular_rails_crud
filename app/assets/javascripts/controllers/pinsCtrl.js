@@ -4,14 +4,12 @@ Board.controller('pinsIndexCtrl',
 
     function($scope, pinService) {
 
-      $scope.pins = [];
-
       var _updatePins = function(pins) {
         angular.copy(pins, $scope.pins);
       };
 
       pinService.all().then(function(pins) {
-        _updatePins(pins);
+        $scope.pins = pins;
       });
 
       $scope.pinParams = {};
@@ -19,10 +17,12 @@ Board.controller('pinsIndexCtrl',
       $scope.transactionOptions = pinService.getTransactOpts();
 
       $scope.createPin = function() {
-        $scope.pins.create($scope.pinParams);
-        _updatePins(pins);
-console.log($scope.pinParams);
-      }
+        $scope.pins.create($scope.pinParams)
+              .then(function(response) {
+                _updatePins(response)
+                $scope.pinParams = {};
+              });
+      };
 
     }
 

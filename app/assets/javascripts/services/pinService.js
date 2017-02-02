@@ -13,7 +13,7 @@ Board.factory('pinService',
       var create = function(params) {
         return Restangular.all('pins').post({
           pin: {
-            item_description: params.itemDescription,
+            item_name: params.itemName,
             transaction_type: params.transactionType,
             description: params.description
           }

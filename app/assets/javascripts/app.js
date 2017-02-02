@@ -1,10 +1,10 @@
 
-var Board = angular.module("Board", ["ui.router", "restangular", "Devise"])
-                   .constant("_", window._);
+var Board = angular.module('Board', ['ui.router', 'restangular', 'Devise'])
+                   .constant('_', window._);
 
 // CSRF config
 Board.config(
-  [ "$httpProvider",
+  [ '$httpProvider',
   function($httpProvider){
     var token = angular.element('meta[name=csrf-token]')
       .attr('content');
@@ -34,7 +34,7 @@ Board.config(
       RestangularProvider.setBaseUrl('/api/v1');
       RestangularProvider.setRequestSuffix('.json');
       RestangularProvider.setDefaultHttpFields({
-          "content-type": "application/json"
+          'content-type': 'application/json'
       });
     }
 
@@ -48,17 +48,16 @@ Board.config(
     $urlRouterProvider.otherwise('/pins');
 
     $stateProvider.state('pins', {
-      url: "",
+      url: '',
       abstract: true
 
     })
-
     .state('pins.index',{
-      url: "/pins",
+      url: '/pins',
       views: {
-        "@": {
-          controller: "pinsIndexCtrl",
-          templateUrl: "templates/pins/index.html"
+        '@': {
+          controller: 'pinsIndexCtrl',
+          templateUrl: 'templates/pins/index.html'
         }
       }
 
