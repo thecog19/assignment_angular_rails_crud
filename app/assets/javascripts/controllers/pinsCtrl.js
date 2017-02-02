@@ -16,7 +16,8 @@ Board.controller('pinsIndexCtrl',
 
       $scope.transactionOptions = pinService.getTransactOpts();
 
-      $scope.createPin = function() {
+      $scope.createPin = function(pinForm) {
+        if (!pinForm.$valid) return;
         $scope.pins.create($scope.pinParams)
               .then(function(response) {
                 _updatePins(response)

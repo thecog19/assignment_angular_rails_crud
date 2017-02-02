@@ -1,5 +1,5 @@
 
-<form ng-submit='createPin()' name='new-pin-form'
+<form ng-submit='createPin({ pinForm: newPinForm })' name='newPinForm'
                               class='form'>
 
   <div class='form-group'>
@@ -7,8 +7,8 @@
            type='text'
            placeholder='Item name'
            class='form-control'
-           ng-minlength="3"
-           ng-maxlength="256">
+           ng-minlength='3'
+           ng-maxlength='256'>
   </div>
 
   <div class='form-group'>
@@ -22,11 +22,10 @@
 
   <div class='form-group'>
     <textarea ng-model='pinParams.description'
-              type='text'
               placeholder='Item description'
               class='form-control'
-              ng-minlength="12"
-              ng-maxlength="256">
+              ng-minlength='12'
+              ng-maxlength='256'>
     </textarea>
   </div>
 

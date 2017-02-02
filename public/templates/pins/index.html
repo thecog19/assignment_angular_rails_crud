@@ -1,28 +1,28 @@
 
 
-<main class="container">
-  <div class="row">
-    <div class="col-sm-12">
+<main class='container'>
+  <div class='row'>
+    <div class='col-sm-12'>
       <h1>The Pinboard</h1>
     </div>
   </div>
 
 
-  <div class="row">
-    <div class="col-sm-12">
+  <div class='row'>
+    <div class='col-sm-12'>
       <new-pin-form
-         pin-params="pinParams"
-         transaction-options="transactionOptions"
-         create-pin="createPin()">
+         pin-params='pinParams'
+         transaction-options='transactionOptions'
+         create-pin='createPin(pinForm)'>
       </new-pin-form>
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-sm-12">
+  <div class='row'>
+    <div class='col-sm-12'>
       <h3>All Pins</h3>
       <ul>
-        <pin ng-repeat="pin in pins" pin="pin"></pin>
+        <pin ng-repeat='pin in pins | orderBy:"id":true' pin='pin'></pin>
       </ul>
     </div>
   </div>
