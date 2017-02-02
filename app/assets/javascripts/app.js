@@ -57,7 +57,7 @@ Board.config(
       url: "/pins",
       views: {
         "@": {
-          controller: "pinsCtrl",
+          controller: "pinsIndexCtrl",
           templateUrl: "templates/pins/index.html"
         }
       }

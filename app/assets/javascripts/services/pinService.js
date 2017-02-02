@@ -4,12 +4,36 @@ Board.factory('pinService',
 
     function(Restangular) {
 
+      var transactionOptions = ['buy', 'sell'];
+
       var all = function() {
         return Restangular.all('pins').getList();
-      }
+      };
+
+      var create = function(params) {
+        return Restangular.all('pins').post({
+          pin: {
+            item_description: params.itemDescription,
+            transaction_type: params.transactionType,
+            description: params.description
+          }
+        })
+        .then(all);
+      };
+
+      Restangular.extendCollection('pins', function(collection) {
+        collection.create = create;
+        return collection;
+      });
+
+      var getTransactOpts = function() {
+        return transactionOptions;
+      };
 
       return {
-        all:all
+        all:all,
+        create: create,
+        getTransactOpts: getTransactOpts
       };
 
     }
