@@ -1,3 +1,24 @@
-<h1>HAPPY PINNING</h1>
 
-{{test}}
+<main class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1>The Pinboard</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <h3>All Pins</h3>
+      <ul>
+        <li ng-repeat="pin in pins">
+          <div>
+          <a href="#">{{ pin.item_name }}</a>
+          <p>{{ pin.transaction_type }}</p>
+          <p>{{ pin.description }}</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</main>
+
